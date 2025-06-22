@@ -10,6 +10,7 @@ import ThemeSelector from "./ThemeSelector";
 import { Play, RotateCcw, Trophy } from "lucide-react";
 import GameBoard from "./GameBoard";
 import { GameStats } from "./GameStats";
+import { WinModal } from "./WinModal";
 
 export default function MemoryGame() {
   const [difficulty, setDifficulty] = useState<Difficulty>("medium");
@@ -62,7 +63,7 @@ export default function MemoryGame() {
     }
   };
 
-  const newGame = () => {
+  const initializeHome = () => {
     setGameStarted(false);
     setCards([]);
     setFlippedCards([]);
@@ -82,7 +83,7 @@ export default function MemoryGame() {
       <div className="max-w-6xl mx-auto">
         {!gameStarted ? (
           <div>
-            <div className="text-center mb-8">
+            <div className="text-center mt-4 mb-8">
               <h1 className="text-4xl md:text-6xl logo text-white mb-4 drop-shadow-lg">
                 Flip & Find
               </h1>
@@ -123,7 +124,7 @@ export default function MemoryGame() {
                   moves={moves}
                   matches={matchedCards.length / 2}
                   totalPairs={cards.length / 2}
-                  onNewGame={newGame}
+                  onReturnHome={initializeHome}
                   onRestart={initializeGame}
                 />
               </div>
@@ -134,6 +135,13 @@ export default function MemoryGame() {
                 matchedCards={matchedCards}
                 onCardClick={handleCardClick}
                 difficulty={difficulty}
+              />
+
+              <WinModal
+                isOpen={gameComplete}
+                moves={moves}
+                onPlayAgain={initializeGame}
+                onReturnHome={initializeHome}
               />
             </div>
           </div>

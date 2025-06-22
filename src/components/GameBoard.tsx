@@ -16,7 +16,7 @@ const GameBoard = ({ cards, flippedCards, matchedCards, onCardClick, difficulty 
       case 'easy':
         return 'grid-cols-4 max-w-2xl';
       case 'medium':
-        return 'grid-cols-4 max-w-xl';
+        return 'grid-cols-4 max-w-lg';
       case 'hard':
         return 'grid-cols-6 max-w-2xl';
       default:
