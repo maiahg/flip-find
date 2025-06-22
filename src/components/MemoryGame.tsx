@@ -87,7 +87,7 @@ export default function MemoryGame() {
               <h1 className="text-4xl md:text-6xl logo text-white mb-4 drop-shadow-lg">
                 Flip & Find
               </h1>
-              <p className="text-lg text-white/90 max-w-2xl mx-auto">
+              <p className="text-sm md:text-lg text-white/90 max-w-2xl mx-auto">
                 Test your memory by matching pairs of cards. <br /> Choose your
                 difficulty and theme to get started!
               </p>

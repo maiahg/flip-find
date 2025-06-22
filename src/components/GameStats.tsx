@@ -36,7 +36,7 @@ export const GameStats = ({
         <div className="flex justify-center gap-12">
           <button
             onClick={onRestart}
-            className="flex items-center gap-2 px-6 py-3 bg-white border-2 font-semibold rounded-2xl transition-all duration-200 hover:scale-105 border-black"
+            className="flex items-center gap-2 px-6 py-3 bg-white border-2 font-semibold rounded-2xl transition-all duration-200 hover:scale-105 border-black text-xs md:text-md"
           >
             <RotateCcw size={20} />
             Restart
@@ -44,7 +44,7 @@ export const GameStats = ({
 
           <button
             onClick={onReturnHome}
-            className="flex items-center gap-2 px-6 py-3 bg-sunrise-orange text-white font-semibold rounded-2xl transition-all duration-200 hover:scale-105"
+            className="flex items-center gap-2 px-6 py-3 bg-sunrise-orange text-white font-semibold rounded-2xl transition-all duration-200 hover:scale-105 text-xs md:text-md"
           >
             <Home size={20} />
             Return Home
