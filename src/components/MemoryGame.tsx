@@ -7,7 +7,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import DifficultySelector from "./DifficultySelector";
 import ThemeSelector from "./ThemeSelector";
-import { Play, RotateCcw, Trophy } from "lucide-react";
+import { Play } from "lucide-react";
 import GameBoard from "./GameBoard";
 import { GameStats } from "./GameStats";
 import { WinModal } from "./WinModal";
