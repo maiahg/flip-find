@@ -23,17 +23,17 @@ const DifficultySelector = ({ difficulty, onDifficultyChange }: DifficultySelect
             key={diff.value}
             variant={difficulty === diff.value ? "default" : "outline"}
             className={`
-              h-auto p-4 flex flex-col items-center space-y-2 transition-all duration-200
+              h-auto p-4 flex flex-col items-center space-y-2 transition-all duration-200 bg-white border
               ${difficulty === diff.value 
                 ? 'bg-coral text-white transform hover:scale-105 hover:bg-coral'  
-                : 'hover:scale-105'
+                : 'hover:scale-105 hover:bg-white border-black'
               }
             `}
             onClick={() => onDifficultyChange(diff.value)}
           >
             <span className="text-lg font-semibold">{diff.label}</span>
-            <span className="text-sm opacity-80">{diff.description}</span>
-            <span className="text-xs opacity-70">{diff.cards}</span>
+            <span className="text-sm">{diff.description}</span>
+            <span className="text-xs">{diff.cards}</span>
           </Button>
         ))}
       </div>

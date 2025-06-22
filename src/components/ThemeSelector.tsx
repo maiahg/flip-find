@@ -23,17 +23,17 @@ const ThemeSelector = ({ theme, onThemeChange }: ThemeSelectorProps) => {
             key={themeOption.value}
             variant={theme === themeOption.value ? "default" : "outline"}
             className={`
-              h-auto p-4 flex flex-col items-center space-y-2 transition-all duration-200
+              h-auto p-4 flex flex-col items-center space-y-2 transition-all duration-200 bg-white border
               ${theme === themeOption.value 
                 ? 'bg-mustard text-white transform hover:scale-105 hover:bg-mustard' 
-                : 'hover:scale-105'
+                : 'hover:scale-105 hover:bg-white border-black'
               }
             `}
             onClick={() => onThemeChange(themeOption.value)}
           >
             <span className="text-3xl">{themeOption.emoji}</span>
             <span className="text-lg font-semibold">{themeOption.label}</span>
-            <span className="text-sm opacity-80 text-center">{themeOption.description}</span>
+            <span className="text-sm text-center">{themeOption.description}</span>
           </Button>
         ))}
       </div>

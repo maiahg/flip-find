@@ -3,13 +3,13 @@
 import React, { useState, useEffect } from "react";
 import { GameCard, Difficulty, Theme } from "../types/game";
 import { generateCards } from "../utils/gameUtils";
-import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import DifficultySelector from './DifficultySelector';
-import ThemeSelector from './ThemeSelector';
-import { Play, RotateCcw, Trophy } from 'lucide-react';
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import DifficultySelector from "./DifficultySelector";
+import ThemeSelector from "./ThemeSelector";
+import { Play, RotateCcw, Trophy } from "lucide-react";
 import GameBoard from "./GameBoard";
-
+import { GameStats } from "./GameStats";
 
 export default function MemoryGame() {
   const [difficulty, setDifficulty] = useState<Difficulty>("medium");
@@ -62,7 +62,7 @@ export default function MemoryGame() {
     }
   };
 
-  const resetGame = () => {
+  const newGame = () => {
     setGameStarted(false);
     setCards([]);
     setFlippedCards([]);
@@ -80,43 +80,62 @@ export default function MemoryGame() {
   return (
     <div className="min-h-screen bg-gradient-to-tr from-coral from-0% via-flamingo via-25% via-tangerine via-50% via-tiger-eye via-75% to-mustard to-100% p-4">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl md:text-6xl logo text-white mb-4 drop-shadow-lg">
-            Flip & Find
-          </h1>
-          <p className="text-lg text-white/90 max-w-2xl mx-auto">
-            Test your memory by matching pairs of cards. <br /> Choose your difficulty
-            and theme to get started!
-          </p>
-        </div>
-
         {!gameStarted ? (
-          <Card className="max-w-2xl mx-auto p-8 bg-white/95 backdrop-blur-sm shadow-2xl">
-            <div className="space-y-6">
-              <DifficultySelector
-                difficulty={difficulty}
-                onDifficultyChange={setDifficulty}
-              />
-              <ThemeSelector theme={theme} onThemeChange={setTheme} />
-
-              <Button
-                onClick={initializeGame}
-                className="w-full py-4 text-lg font-semibold bg-sunrise-orange transform hover:bg-sunrise-orange hover:scale-105 transition-all duration-200"
-              >
-                <Play className="mr-2 h-5 w-5" />
-                Start Game
-              </Button>
+          <div>
+            <div className="text-center mb-8">
+              <h1 className="text-4xl md:text-6xl logo text-white mb-4 drop-shadow-lg">
+                Flip & Find
+              </h1>
+              <p className="text-lg text-white/90 max-w-2xl mx-auto">
+                Test your memory by matching pairs of cards. <br /> Choose your
+                difficulty and theme to get started!
+              </p>
             </div>
-          </Card>
+
+            <Card className="max-w-2xl mx-auto p-8 bg-white/95 backdrop-blur-sm shadow-2xl">
+              <div className="space-y-6">
+                <DifficultySelector
+                  difficulty={difficulty}
+                  onDifficultyChange={setDifficulty}
+                />
+                <ThemeSelector theme={theme} onThemeChange={setTheme} />
+
+                <Button
+                  onClick={initializeGame}
+                  className="w-full py-4 text-lg font-semibold bg-sunrise-orange transform hover:bg-sunrise-orange hover:scale-105 transition-all duration-200"
+                >
+                  <Play className="mr-2 h-5 w-5" />
+                  Start Game
+                </Button>
+              </div>
+            </Card>
+          </div>
         ) : (
-          <div className="space-y-6">
-            <GameBoard
-              cards={cards}
-              flippedCards={flippedCards}
-              matchedCards={matchedCards}
-              onCardClick={handleCardClick}
-              difficulty={difficulty}
-            />
+          <div>
+            <div className="text-center mb-8">
+              <h1 className="text-4xl md:text-6xl logo text-white mb-4 drop-shadow-lg">
+                Flip & Find
+              </h1>
+            </div>
+            <div className="space-y-6">
+              <div className="items-center justify-center flex">
+                <GameStats
+                  moves={moves}
+                  matches={matchedCards.length / 2}
+                  totalPairs={cards.length / 2}
+                  onNewGame={newGame}
+                  onRestart={initializeGame}
+                />
+              </div>
+
+              <GameBoard
+                cards={cards}
+                flippedCards={flippedCards}
+                matchedCards={matchedCards}
+                onCardClick={handleCardClick}
+                difficulty={difficulty}
+              />
+            </div>
           </div>
         )}
       </div>

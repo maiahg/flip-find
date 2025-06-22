@@ -13,7 +13,7 @@ const MemoryCard = ({ card, isFlipped, isMatched, onClick }: MemoryCardProps) =>
   return (
     <Card 
       className={`
-        relative aspect-square cursor-pointer transition-all duration-300 transform hover:scale-105
+        relative aspect-square cursor-pointer transition-all duration-300 transform hover:scale-105 border-0
         ${isMatched ? 'ring-4 ring-green-600' : 'hover:shadow-lg'}
         ${isFlipped ? 'bg-white' : 'bg-sandstorm'}
       `}

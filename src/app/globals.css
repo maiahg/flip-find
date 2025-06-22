@@ -45,6 +45,7 @@
 }
 
 @theme {
+  --color-white: #FDF7E1;
   --color-coral: #D64466;
   --color-mustard: #DAAE51;
   --color-flamingo: #e25357;
